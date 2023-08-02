@@ -4,17 +4,27 @@ import sys
 
 env = SConscript("godot-cpp/SConstruct")
 
-# For reference:
-# - CCFLAGS are compilation flags shared between C and C++
-# - CFLAGS are for C-specific compilation flags
-# - CXXFLAGS are for C++-specific compilation flags
-# - CPPFLAGS are for pre-processor flags
-# - CPPDEFINES are for pre-processor defines
-# - LINKFLAGS are for linking flags
+GODOT_PROJECT_PATH = "../micro-gaia/bin"
 
-# tweak this if you want to use different folders, or more folders, to store your source code in.
-env.Append(CPPPATH=["source/", "source/register_types"])
-sources = Glob("source/*.cpp") + Glob("source/register_types/*.cpp")
+# allow for colour output...
+env["ENV"]["TERM"] = os.environ["TERM"]
+
+# reigster headers
+env.Append(
+    CPPPATH=["/usr/local/include"]
+)
+
+# register static libraries
+env.Append(LIBS=["libcircular"])
+
+# register source files
+source_dirs=[
+    "source/",
+    "source/register_types/"
+]
+
+env.Append(CPPPATH=source_dirs)
+sources = [Glob(d + "*.cpp") for d in source_dirs]
 
 if env["platform"] == "macos":
     library = env.SharedLibrary(
@@ -28,5 +38,9 @@ else:
         "build/libandrija{}{}".format(env["suffix"], env["SHLIBSUFFIX"]),
         source=sources,
     )
+
+# allow installing to the Godot project bin/ directory
+env.Install(GODOT_PROJECT_PATH, library)
+env.Alias('install', GODOT_PROJECT_PATH)
 
 Default(library)
