@@ -1,6 +1,6 @@
 #include "register_types.h"
 
-#include "andrija.h"
+#include "andrija.hpp"
 
 #include <gdextension_interface.h>
 #include <godot_cpp/core/class_db.hpp>

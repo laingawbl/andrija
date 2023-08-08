@@ -1,4 +1,4 @@
-#include "andrija.h"
+#include "andrija.hpp"
 
 #include <godot_cpp/core/class_db.hpp>
 

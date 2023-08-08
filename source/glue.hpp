@@ -14,8 +14,8 @@
 namespace moho {
 namespace glue {
 
-inline std::string StlStringFromGodot(const godot::String &s);
-inline godot::String GodotStringFromStl(const std::string &s);
+std::string StlStringFromGodot(const godot::String &s);
+godot::String GodotStringFromStl(const std::string &s);
 
 circular::ConfigMap ConfigFileToMap(const godot::ConfigFile &f);
 } // namespace glue
