@@ -18,7 +18,9 @@ void dummy::GlueTester::ConvertAndPrintConfigFile(Ref<ConfigFile> f) {
   auto f_conv = glue::ConfigFileToMap(*f.ptr());
   for (const auto s : f_conv.get_sections()) {
     for (const auto k : f_conv.get_section_keys(s)) {
-      std::cout << std::boolalpha << s << " .\t" << k << " =\t";
+      std::cout << std::boolalpha << s << " .\t" << k << "\t\n";
+      // If and only if this needs debugging in future, write a std::variant
+      // visitor to print values and call it here.
     }
   }
 }
