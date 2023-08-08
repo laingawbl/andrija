@@ -96,7 +96,9 @@ std::string moho::glue::StlStringFromGodot(const godot::String &s) {
 }
 
 godot::String moho::glue::GodotStringFromStl(const std::string &s) {
-  return godot::String(s.c_str());
+  godot::String g;
+  g.parse_utf8(s.c_str(), s.length());
+  return g;
 }
 
 circular::ConfigMap glue::ConfigFileToMap(const godot::ConfigFile &f) {

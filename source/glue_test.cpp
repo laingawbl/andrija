@@ -11,7 +11,6 @@ using namespace moho;
 
 String dummy::GlueTester::RoundTripConvert(const String &s) {
   auto stl = glue::StlStringFromGodot(s);
-  std::cout << stl << std::endl;
   return glue::GodotStringFromStl(stl);
 }
 
