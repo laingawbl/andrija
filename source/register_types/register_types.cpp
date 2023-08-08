@@ -1,5 +1,5 @@
 #include "andrija.hpp"
-#include "glue_test.hpp"
+#include "glue/glue_test.hpp"
 
 #include <gdextension_interface.h>
 #include <godot_cpp/core/class_db.hpp>

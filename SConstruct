@@ -26,6 +26,7 @@ env.Append(LIBS=["libcircular"])
 # register source files
 source_dirs=[
     "source/",
+    "source/glue/"
     "source/register_types/"
 ]
 
