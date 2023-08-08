@@ -1,6 +1,5 @@
-#include "register_types.h"
-
 #include "andrija.hpp"
+#include "glue_test.hpp"
 
 #include <gdextension_interface.h>
 #include <godot_cpp/core/class_db.hpp>
@@ -22,6 +21,7 @@ void initialize_andrija(ModuleInitializationLevel p_level) {
   }
 
   ClassDB::register_class<moho::Adder>();
+  ClassDB::register_class<moho::dummy::GlueTester>();
 }
 
 void uninitialize_andrija(ModuleInitializationLevel p_level) {
