@@ -9,6 +9,12 @@ GODOT_PROJECT_PATH = "../micro-gaia/bin"
 # allow for colour output...
 env["ENV"]["TERM"] = os.environ["TERM"]
 
+# Require C++20
+if env.get("is_msvc", False):
+    env.Append(CXXFLAGS=["/std:c++20"])
+else:
+    env.Append(CXXFLAGS=["-std=c++20"])
+
 # reigster headers
 env.Append(
     CPPPATH=["/usr/local/include"]
@@ -20,6 +26,7 @@ env.Append(LIBS=["libcircular"])
 # register source files
 source_dirs=[
     "source/",
+    "source/glue/",
     "source/register_types/"
 ]
 
